@@ -10,6 +10,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import { register } from "./controllers/auth.js";
+import userRoutes from "./routes/users.js";
+
 
 // middleware
 const __filename = fileURLToPath(import.meta.url);
@@ -37,10 +39,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // file routes
-app.post("/auth/register", upload.single("picture"), register); 
+app.post("/auth/register", upload.single("picture"), register);
 
 // routes
-app.use("/auth", authRoutes)
+app.use("/auth", authRoutes);
+app.use("/users", userRoutes)
 
 // mongoose
 const PORT = process.env.PORT || 6001;
