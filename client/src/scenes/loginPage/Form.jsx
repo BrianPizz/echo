@@ -150,12 +150,12 @@ const Form = () => {
                       >
                         <input {...getInputProps} />
                         {!values.picture ? (
-                            <p>Add Picture Here</p>
+                          <p>Add Picture Here</p>
                         ) : (
-                            <FlexBetween>
-                                <Typography>{values.picture.name}</Typography>
-                                <EditOutlinedIcon/>
-                            </FlexBetween>
+                          <FlexBetween>
+                            <Typography>{values.picture.name}</Typography>
+                            <EditOutlinedIcon />
+                          </FlexBetween>
                         )}
                       </Box>
                     )}
@@ -163,7 +163,29 @@ const Form = () => {
                 </Box>
               </>
             )}
+            <TextField
+              label="Email"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.email}
+              name="email"
+              error={Boolean(touched.email) && Boolean(errors.email)}
+              helperText={touched.email && errors.email}
+              sx={{ gridColumn: "span 4" }}
+            />
+            <TextField
+              label="Password"
+              type="password"
+              onBlur={handleBlur}
+              onChange={handleChange}
+              value={values.password}
+              name="password"
+              error={Boolean(touched.password) && Boolean(errors.password)}
+              helperText={touched.password && errors.password}
+              sx={{ gridColumn: "span 4" }}
+            />
           </Box>
+          
         </form>
       )}
     </Formik>
